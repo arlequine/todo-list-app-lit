@@ -38,6 +38,7 @@ class TodoApp extends LitElement {
         button {
           border: none;
           background-color: #008080;
+          color: #ffffff;
           font-size: 1rem;
           padding: 0.5rem 1rem;
           margin: 0.5rem 0;
@@ -48,6 +49,36 @@ class TodoApp extends LitElement {
           display: flex;
           justify-content: center;
         }
+        .container-cards {
+          display: flex;
+          justify-content: center;
+        }
+        .card {
+          background-color: #ffffff;
+          border-radius: 0.625rem;
+          padding: 1rem;
+        }
+        .container {
+          padding-right: 15px;
+          padding-left: 15px;
+          margin-right: auto;
+          margin-left: auto;
+        }
+        @media (min-width: 768px) {
+          .container {
+            width: 750px;
+          }
+        }
+        @media (min-width: 992px) {
+          .container {
+            width: 970px;
+          }
+        }
+        @media (min-width: 1200px) {
+          .container {
+            width: 1170px;
+          }
+        }
       `;
     }
 
@@ -55,7 +86,7 @@ class TodoApp extends LitElement {
     super();
     this.taskName = '';
     this.data = [
-      {task: 'estudiar', completed: false},
+      {task: 'estudiar', completed: true},
       {task: 'ejercicio', completed: false},
       {task: 'Videojuegos', completed: false},
       {task: 'doctor', completed: false},
@@ -70,21 +101,22 @@ class TodoApp extends LitElement {
 
   render() {
     return html`
-      <main>
+      <main class="container">
         <h1>TodoList App</h1>
-        <form @submit="${this.onSubmit}">
-          <label>
-            Nombre de la tarea
-            <input 
-              type="text"
-              placeholder="Nueva Tarea"
-              .value="${this.taskName}"
-              @input="${e => {this.taskName = e.target.value}}"
-            />
-          </label>
-          <button type="submit">Agrega Tarea</button>
-        </form>
-        <todo-list .list=${this.data} ></todo-list>
+        <div class="container-cards" >
+          <div class="card">
+            <form @submit="${this.onSubmit}">
+              <input 
+                type="text"
+                placeholder="Nueva Tarea"
+                .value="${this.taskName}"
+                @input="${e => {this.taskName = e.target.value}}"
+              />
+              <button type="submit">Agrega Tarea</button>
+            </form>
+            <todo-list .list=${this.data} ></todo-list>
+          </div>
+        </div>
       </main>
     `;
   }

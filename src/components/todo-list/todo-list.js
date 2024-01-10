@@ -12,7 +12,10 @@ export class TodoList extends LitElement {
   static get styles() {
     return css`
       .list-contain {
-        width: 50%
+        width: 100%
+      }
+      ul.list {
+        padding: 0;
       }
     `
   }

@@ -19,8 +19,10 @@ export class ListItem extends LitElement {
         color: white;
         font-family: Helvetica;
         font-size: 16px;
-        margin: 1px;
+        margin: .5rem;
+        border-radius: 5px;
       }
+      .completed {}
 
       input {
         margin: 0.5rem;
@@ -44,6 +46,7 @@ export class ListItem extends LitElement {
         />
         <div 
           class="todo-text ${this.completed ? 'completed' : ''}">
+            ${this.completed ? 'completed' : ''}
             ${this.task}
           </div>
       </label>
